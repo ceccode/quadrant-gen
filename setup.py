@@ -12,8 +12,8 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     author="Francesco",
-    author_email="your.email@example.com",  # Replace with your email
-    url="https://github.com/yourusername/quadrant-gen",  # Replace with your repo URL
+    author_email="falanga.fra@gmail.com",  # Replace with your email
+    url="https://github.com/ceccode/quadrant-gen",  # Replace with your repo URL
     packages=find_packages(),
     install_requires=[
         "matplotlib>=3.5.0",
@@ -34,7 +34,7 @@ setup(
     ],
     keywords="quadrant, chart, visualization, matplotlib, csv",
     project_urls={
-        "Bug Reports": "https://github.com/yourusername/quadrant-gen/issues",
-        "Source": "https://github.com/yourusername/quadrant-gen",
+        "Bug Reports": "https://github.com/ceccode/quadrant-gen/issues",
+        "Source": "https://github.com/ceccode/quadrant-gen",
     },
 )

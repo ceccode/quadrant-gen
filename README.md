@@ -16,7 +16,7 @@ A Python library for creating quadrant charts with customizable labels and data 
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/quadrant-gen.git
+git clone https://github.com/ceccode/quadrant-gen.git
 cd quadrant-gen
 
 # Install the package
