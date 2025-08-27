@@ -229,6 +229,14 @@ The library generates base64-encoded images in two formats:
 - **PNG**: Web-friendly format for digital display
 - **PDF**: Vector format for high-quality printing and scaling
 
+## Contributing
+
+### For Developers
+
+If you're a developer looking to contribute or maintain this package:
+
+- See [PUBLISHING.md](PUBLISHING.md) for instructions on how to build and publish new versions to PyPI
+
 ## License
 
 MIT
