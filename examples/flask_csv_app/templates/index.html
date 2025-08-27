@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quadrant Chart Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            grid-column: span 2;
+        }
+        .form-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .result-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], textarea, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        textarea {
+            height: 150px;
+            font-family: monospace;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            flex: 1;
+        }
+        button[type="submit"] {
+            background-color: #2ecc71;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        .chart-container {
+            margin-top: 20px;
+        }
+        .chart-container img {
+            max-width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .flash-messages {
+            margin-bottom: 20px;
+            grid-column: span 2;
+        }
+        .flash-message {
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .flash-message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .flash-message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .options-row {
+            display: flex;
+            gap: 20px;
+        }
+        .options-row .form-group {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Quadrant Chart Generator</h1>
+        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="flash-message {{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        
+        <div class="form-section">
+            <h2>Input Data</h2>
+            <form method="POST">
+                <div class="form-group">
+                    <label for="csv_data">CSV Data (name,description,x,y)</label>
+                    <textarea id="csv_data" name="csv_data" required>{{ csv_data }}</textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="title">Chart Title</label>
+                    <input type="text" id="title" name="title" value="Quadrant Chart">
+                </div>
+                
+                <div class="options-row">
+                    <div class="form-group">
+                        <label for="x_left">X-Axis Left Label</label>
+                        <input type="text" id="x_left" name="x_left" value="Low X">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="x_right">X-Axis Right Label</label>
+                        <input type="text" id="x_right" name="x_right" value="High X">
+                    </div>
+                </div>
+                
+                <div class="options-row">
+                    <div class="form-group">
+                        <label for="y_bottom">Y-Axis Bottom Label</label>
+                        <input type="text" id="y_bottom" name="y_bottom" value="Low Y">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="y_top">Y-Axis Top Label</label>
+                        <input type="text" id="y_top" name="y_top" value="High Y">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="format">Output Format</label>
+                    <select id="format" name="format">
+                        <option value="png">PNG Image</option>
+                        <option value="pdf">PDF Document</option>
+                    </select>
+                </div>
+                
+                <div class="button-group">
+                    <button type="submit">Generate Chart</button>
+                    <button type="submit" name="download" value="true">Generate & Download</button>
+                </div>
+            </form>
+        </div>
+        
+        <div class="result-section">
+            <h2>Generated Chart</h2>
+            {% if chart_image %}
+                <div class="chart-container">
+                    <img src="{{ chart_image }}" alt="Quadrant Chart">
+                </div>
+            {% else %}
+                <p>Enter CSV data and click "Generate Chart" to create a quadrant chart.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
