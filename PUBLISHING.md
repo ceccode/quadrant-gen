@@ -70,21 +70,6 @@ Test that the package can be installed from PyPI:
 pip install --upgrade quadrant-gen
 ```
 
-## Testing with TestPyPI (Optional)
-
-If you want to test the upload process without publishing to the main PyPI:
-
-1. Register at https://test.pypi.org/account/register/
-
-2. Upload to TestPyPI:
-   ```bash
-   twine upload --repository-url https://test.pypi.org/legacy/ dist/*
-   ```
-
-3. Install from TestPyPI:
-   ```bash
-   pip install --index-url https://test.pypi.org/simple/ quadrant-gen
-   ```
 
 ## Creating a GitHub Release (Optional)
 
@@ -100,4 +85,4 @@ If you're using GitHub:
 
 ## Automating with GitHub Actions (Future Enhancement)
 
-For future versions, consider setting up GitHub Actions to automatically build and publish the package when a new release is tagged.
+TODO: setting up GitHub Actions to automatically build and publish the package when a new release is tagged.
