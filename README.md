@@ -111,6 +111,12 @@ The following examples are included in the repository:
 - **Flask API Example**: `examples/flask_api_example.py` - RESTful API for generating charts
 - **Flask CSV App**: `examples/flask_csv_app/` - Web application with CSV input form
 
+### Live Demo
+
+Try the Flask CSV App online: **https://quadrant-gen-example.onrender.com/**
+
+Source code for the live demo: **https://github.com/ceccode/quadrant-gen-example**
+
 ## Integration with Web Applications
 
 The Quadrant Generator is optimized for web applications and API integrations:
